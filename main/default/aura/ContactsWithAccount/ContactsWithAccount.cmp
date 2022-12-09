@@ -1,0 +1,40 @@
+<aura:component controller="ContactswithAccountClass" implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="accounts" type="Account[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.getAccounts}" />
+    
+    <aura:attribute name="offset" type="integer" />
+    
+	<aura:attribute name="next" type="boolean" />
+	<aura:attribute name="prev" type="boolean" />
+        <table style='Border:Solid Black 1px; Background-color:white; border-collapse: collapse;'>
+        <tr style='Border: solid black 0.5px;'>
+            <td>
+                <b>Name</b>
+            </td>
+            <td>
+                <b>Phone</b>
+            </td>
+            <td>
+                <b>Contacts</b>
+            </td>
+        </tr>
+        <aura:iteration items="{!v.accounts}" var="accs1" >
+            <tr style='Border: solid black 0.5px;'>  
+                <td style='Border: solid black 0.5px; border-collapse: collapse;'> {!accs1.Name}  </td>
+                  <td style='Border: solid black 0.5px; border-collapse: collapse;'> {!accs1.Phone}  </td>
+                <table>
+                    <aura:iteration items="{!accs1.Contacts}" var="con1" >
+                        <tr style='Border: solid black 0.5px; border-collapse: collapse;'>
+                            <td>{!con1.LastName}</td>
+                        </tr>
+                    </aura:iteration>
+                </table>
+            </tr> 
+         </aura:iteration>                                           
+    </table>
+	<div>
+        <ui:button press="{!c.Next}" disabled="{!v.next}" >Next</ui:button>
+        <ui:button press="{!c.Previous}" disabled="{!v.prev}">Previous</ui:button> 
+    </div>
+        
+</aura:component>

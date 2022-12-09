@@ -1,0 +1,45 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" access="global">
+	<aura:attribute name="imgurl" type="String"/>
+    <aura:attribute name="desc" type="String"/>
+    <aura:attribute name="fsize" type="Integer"/>
+    <aura:attribute name="bcolor" type="String"/> 
+    <aura:attribute name="fcolor" type="String"/>
+    <aura:attribute name="showData" type="boolean"/>
+    <aura:html tag="style">
+        .testDiv{
+            color:{!v.fcolor};
+            font-size:{!v.fsize}px;
+            background-color:{!v.bcolor};
+        }
+        
+    </aura:html>
+    <div>
+        <lightning:input aura:id="Imgurl" label="Image URL :-" onchange="{!c.Display}" value="{!v.imgurl}"/>
+    </div>
+    <div>
+        <lightning:input aura:id="Desc" label="Description :-" value="{!v.desc}"/>
+    </div>
+    <div>
+        <lightning:input aura:id="fcolor" type="color" label="Font Color :-" value="{!v.fcolor}"/>
+    </div>
+    <div>
+        <lightning:input aura:id="fsize" label="Font Size" value="{!v.fsize}"/>
+    </div>
+    <div>
+        <lightning:input aura:id="bcolor" type="color" label="Background Color :-" value="{!v.bcolor}"/>
+    </div>
+
+    <aura:renderIf isTrue="{!v.showData}">
+        <div class="slds-box">
+            <div class="imgDiv">
+                <aura:html aura:id="imgDiv" tag="img"/>
+            </div>
+            <h1 >Description :-</h1>
+            <div>
+                <h1 class="testDiv">{!v.desc}</h1>
+            </div>
+        </div>
+    </aura:renderIf>
+ 
+    
+</aura:component>

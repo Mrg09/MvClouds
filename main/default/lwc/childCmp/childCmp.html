@@ -1,0 +1,12 @@
+<template>
+    <template if:true={newFileWasUploaded}>
+        <h1>
+            Child Component
+        </h1>
+        <template for:each={uploadedFilesUrl} for:item="file">
+            <div key={file.id}>
+                <img src={file.id}/>
+            </div>
+        </template>
+     </template>      
+</template>
